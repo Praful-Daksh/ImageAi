@@ -20,6 +20,8 @@ generateBtn.addEventListener('click', (e) => {
       hideloader();
       description.textContent = prompt.value;
       document.getElementById('download').href = objectUrl;
+      document.getElementById('download').download = prompt.value;
+      
     });
   }
 })
