@@ -31,6 +31,40 @@
       margin-top: 50px;
     }
 
+    .loader {
+      width: 100px;
+      height: 3px;
+      background-color: rgb(15, 15, 15);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .child {
+      width: 60px;
+      height: 3px;
+      background-color: rgb(107, 27, 255);
+      border-radius: 20px;
+      z-index: 0;
+      margin-left: -60px;
+      animation: go 1s 0s infinite;
+    }
+
+    @keyframes go {
+      from {
+        margin-left: -100px;
+        width: 80px;
+      }
+
+      to {
+        width: 30px;
+        margin-left: 110px;
+      }
+    }
+
+    ul {
+      list-style: none;
+    }
+   
   </style>
 </head>
 
@@ -73,15 +107,33 @@
     <p>Imagine anything you want to imagine!</p>
     <form>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Enter Prompt *" required>
+        <input type="text" class="form-control" placeholder="Enter Prompt *" required id="prompt">
       </div>
-      <button type="submit" class="btn btn-dark">Generate Image</button>
+      <button type="submit" class="btn btn-dark" id="button">Generate Image</button>
     </form>
 
   </div>
+  <div class="container d-flex align-items-center justify-content-center mt-5" >
+    <div class="card d-none" style="width: 18rem;" id="image-card">
+      <img src="image.jpg" class="card-img-top" alt="..." id="aiImage">
+      <div class="card-body ">
+        <p class="card-text" id="image-description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="container d-flex justify-content-center align-items-center">
+    <ul>
+      <li>
+        <div class="loader d-none" id="loader">
+          <div class="child"></div>
+        </div>
+      </li>
+    </ul>
 
+  </div>
 
-
+  <script src="app.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
