@@ -4,18 +4,22 @@ var generateBtn = document.getElementById('button');
 var Image = document.getElementById('aiImage');
 var imageCard = document.getElementById('image-card');
 var description = document.getElementById('image-description');
+
+var objectUrl;
 generateBtn.addEventListener('click', (e) => {
   e.preventDefault();
   if (prompt.value != '') {
     console.log(prompt.value)
-    description.textContent = prompt.value;
     showloader();
+    hideImage();
     query().then(result => {
       console.log(result)
-      const objectUrl = URL.createObjectURL(result);
+       objectUrl = URL.createObjectURL(result);
       Image.src = objectUrl;
       showimage();
       hideloader();
+      description.textContent = prompt.value;
+      document.getElementById('download').href = objectUrl;
     });
   }
 })
@@ -50,6 +54,14 @@ async function query() {
 }
 
 function showimage() {
-  
   imageCard.classList.remove('d-none');
 }
+
+function hideImage(){
+  imageCard.classList.add('d-none');
+}
+
+document.getElementById('download').addEventListener('click',()=>{
+  
+  console.log('hello')
+})
